@@ -1,0 +1,78 @@
+# phishalyzer
+
+Offline nástroj, který z jednoho `.eml` souboru udělá strukturovaný report s odůvodněnými nálezy.
+
+Co to není: antispam, sandbox, ani nic, co přílohy otvírá nebo spouští. Jádro nikdy nesahá na síť — žádné DNS, žádné HTTP.
+
+## Jak získat původní .eml (čtěte jako první)
+
+Nástroj potřebuje **původní soubor s hlavičkami**. Přeposlaný mail hlavičky původní zprávy nemá a nástroj s ním nic nesvede — vyhodnotí hlavičky vašeho kolegy, ne útočníka.
+
+- **Outlook (desktop):** zprávu přetáhněte myší na plochu, vznikne `.msg`/`.eml`. Nebo Soubor → Uložit jako → formát .eml.
+- **Outlook (web):** tři tečky u zprávy → Stáhnout.
+- **Gmail:** tři tečky → Zobrazit originál → Stáhnout originál zprávy.
+- **Thunderbird:** pravé tlačítko → Uložit jako.
+- Pokud vám někdo podezřelý mail posílá, ať ho přiloží **jako přílohu**, ne přepošle.
+
+## Instalace
+
+```
+pipx install git+https://github.com/<vas-ucet>/phishalyzer
+```
+
+Bez pipx: `pip install .` v kořeni repozitáře. Vyžaduje Python 3.10+.
+
+## Použití
+
+```
+phishalyzer podezrely.eml            # lidsky čitelný report
+phishalyzer podezrely.eml --json     # strojově zpracovatelný výstup
+```
+
+Návratový kód: 0 = clean, 1 = suspicious/malicious, 2 = chyba vstupu. Všechny URL v reportu jsou defangované (`hxxp://zlo[.]ru`), aby na ně nešlo omylem kliknout.
+
+## Verdikt
+
+Žádné skóre 0–100. Vážený součet bez otestovaného datasetu jsou vymyšlená čísla. Verdikt je ordinální a plyne z pravidel, která se dají vypsat a obhájit:
+
+- **malicious** — kterýkoli nález se závažností critical, nebo dva a víc high
+- **suspicious** — jeden high, nebo tři a víc medium
+- **clean** — nic z toho
+
+Každý nález nese pole `evidence` s konkrétními hodnotami z mailu, takže si závěr můžete ověřit sami, aniž byste nástroji věřili.
+
+## Obálka vs. hlavička, a co znamená DMARC pass
+
+SMTP obálka (Return-Path) je skutečný odesílatel na úrovni doručení; hlavička `From:` je jen text, který se zobrazí v klientovi. Autentizace (SPF, DKIM, DMARC) ověřuje, že odesílatel **doménu vlastní** — nic víc. `dmarc=pass` neznamená „mail je legitimní". Nejběžnější phishing dneška projde všemi třemi kontrolami, protože útočník posílá z gmailové adresy, kterou skutečně vlastní, a lže jen v display name.
+
+## Proč to běží lokálně
+
+Podezřelé maily neopouštějí počítač. Interní pošta obsahuje citlivý obsah a firma vám nedovolí ji nahrávat na cizí web — lokální běh není omluva, je to podmínka použitelnosti. Do VirusTotalu se dá bezpečně poslat SHA-256 hash přílohy (nástroj ho počítá), samotný soubor ne.
+
+## Co nástroj kontroluje
+
+- **Identita odesílatele:** neshoda From vs. Return-Path a Reply-To (porovnává se registrovatelná doména, `mail.firma.cz` = `firma.cz`), display name vydávající se za značku nebo cizí doménu, vícenásobná hlavička From, výsledky z `Authentication-Results`.
+- **Odkazy:** text odkazu vs. skutečný cíl, punycode a ne-ASCII znaky, zkracovače, domény napodobující značky (vzdálenost 1 znak, pomlčkové varianty typu `mojebanka-zabezpeceni`). Odkazy se nikdy nenačítají.
+- **Přílohy:** typ podle magic bytes (ne podle přípony), dvojité přípony, formáty s makry, archivy chráněné heslem, spustitelné soubory v archivech, limity proti zip bombě, SHA-256.
+- **Received chain:** zobrazí se jako časová osa pro ruční posouzení. Záměrně z ní neděláme signál — legitimní pošta přes forwardery vypadá stejně divně.
+
+## Přiznané limity
+
+- **Čistý textový podvod nechytí.** Mail bez odkazu a bez přílohy, jen s textem „pošli platbu na tenhle účet", vyjde jako clean. Nástroj analyzuje technické artefakty; sociální inženýrství v čistém textu žádné nemá.
+- **Authentication-Results jen čte.** Vlastní SPF/DKIM ověřování by vnášelo živou závislost na DNS a výsledek by se po týdnu lišil od stavu při doručení.
+- **Seznam značek je konečný.** Display name spoof a lookalike domény se poznají jen u značek v seznamu (`identity.KNOWN_BRANDS`, `urls.BRAND_DOMAINS`). Rozšíření je jedna řádka.
+- **Zkracovače nerozbaluje.** Rozbalení vyžaduje HTTP požadavek, a ten záměrně neděláme.
+
+## Vývoj
+
+```
+pip install -e ".[dev]"
+python tools/generate_fixtures.py   # syntetické testovací maily
+pytest
+```
+
+Do repozitáře nepatří skutečné phishing vzorky — obsahují adresy živých lidí a přílohy, které antivirus označí. Testuje se výhradně na syntetických fixtures; skutečné vzorky držte lokálně mimo git (`samples-real/` je v .gitignore).
+
+## Bezpečnostní zásady
+
+Vstup je nepřátelský. Nástroj proto: limituje velikost souboru (25 MB) a hloubku MIME (20), nerozbaluje archivy nad 200 položek nebo 200 MB rozbalených, nikdy nerenderuje HTML ani nenačítá vzdálený obsah (sledovací pixely), sanitizuje názvy příloh před výpisem a nikdy žádnou přílohu nespouští ani neotvírá.
