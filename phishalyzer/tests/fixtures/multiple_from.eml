@@ -1,0 +1,13 @@
+From: Podpora <podpora@example.com>
+To: prijemce@example.com
+Subject: Aktualizace =?utf-8?b?w7rEjXR1?=
+Date: Mon, 05 Jan 2026 09:15:00 +0100
+Message-ID: <test@example.com>
+Received: from mail.example.net (mail.example.net [203.0.113.5]) by
+ mx.example.com; Mon, 05 Jan 2026 09:15:02 +0100
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+MIME-Version: 1.0
+From: Admin <admin@zlo.example>
+
+Klikněte pro aktualizaci.

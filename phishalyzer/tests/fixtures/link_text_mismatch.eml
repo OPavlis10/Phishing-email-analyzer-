@@ -1,0 +1,26 @@
+From: Podpora <podpora@example.org>
+To: prijemce@example.com
+Subject: Obnovte si heslo
+Date: Mon, 05 Jan 2026 09:15:00 +0100
+Message-ID: <test@example.com>
+Received: from mail.example.net (mail.example.net [203.0.113.5]) by
+ mx.example.com; Mon, 05 Jan 2026 09:15:02 +0100
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============6530222696742167751=="
+
+--===============6530222696742167751==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+Obnovte si heslo na www.csas.cz
+
+--===============6530222696742167751==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>Obnovte si heslo na <a href=3D"http://zlo.example.ru/login">ww=
+w.csas.cz</a></p></body></html>
+
+--===============6530222696742167751==--

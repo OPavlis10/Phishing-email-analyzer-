@@ -1,0 +1,27 @@
+From: =?utf-8?b?w5rEjXTDoXJuYQ==?= <uctarna@example.org>
+To: prijemce@example.com
+Subject: Faktura 2026-001
+Date: Mon, 05 Jan 2026 09:15:00 +0100
+Message-ID: <test@example.com>
+Received: from mail.example.net (mail.example.net [203.0.113.5]) by
+ mx.example.com; Mon, 05 Jan 2026 09:15:02 +0100
+MIME-Version: 1.0
+Return-Path: <uctarna@example.org>
+Content-Type: multipart/mixed; boundary="===============8263049774838322395=="
+
+--===============8263049774838322395==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+Faktura v příloze.
+
+--===============8263049774838322395==
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="faktura.pdf.exe"
+MIME-Version: 1.0
+
+TVqQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAA==
+
+--===============8263049774838322395==--

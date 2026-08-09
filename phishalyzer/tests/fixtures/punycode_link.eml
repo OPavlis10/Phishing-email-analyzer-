@@ -1,0 +1,26 @@
+From: Info <info@example.org>
+To: prijemce@example.com
+Subject: =?utf-8?q?Doru=C4=8Den=C3=AD_z=C3=A1silky?=
+Date: Mon, 05 Jan 2026 09:15:00 +0100
+Message-ID: <test@example.com>
+Received: from mail.example.net (mail.example.net [203.0.113.5]) by
+ mx.example.com; Mon, 05 Jan 2026 09:15:02 +0100
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============6900951739736694452=="
+
+--===============6900951739736694452==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+Sledujte zásilku.
+
+--===============6900951739736694452==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><a href=3D"http://xn--seznm-3ta.example/track">Sledovat z=C3=A1si=
+lku</a></body></html>
+
+--===============6900951739736694452==--

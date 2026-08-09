@@ -1,0 +1,13 @@
+From: Fakturace <fakturace@duveryhodna-firma.example>
+To: prijemce@example.com
+Subject: =?utf-8?q?Neuhrazen=C3=A1?= faktura
+Date: Mon, 05 Jan 2026 09:15:00 +0100
+Message-ID: <test@example.com>
+Received: from mail.example.net (mail.example.net [203.0.113.5]) by
+ mx.example.com; Mon, 05 Jan 2026 09:15:02 +0100
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+MIME-Version: 1.0
+Return-Path: <bounce@uplne-jina-domena.example>
+
+Uhraďte prosím fakturu v příloze.

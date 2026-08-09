@@ -1,0 +1,15 @@
+From: =?utf-8?q?=C4=8Cesk=C3=A1_spo=C5=99itelna?= <nahodny.ucet1234@gmail.com>
+To: prijemce@example.com
+Subject: =?utf-8?q?Va=C5=A1e?= platba byla pozastavena
+Date: Mon, 05 Jan 2026 09:15:00 +0100
+Message-ID: <test@example.com>
+Received: from mail.example.net (mail.example.net [203.0.113.5]) by
+ mx.example.com; Mon, 05 Jan 2026 09:15:02 +0100
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+MIME-Version: 1.0
+Return-Path: <nahodny.ucet1234@gmail.com>
+Authentication-Results: mx.example.com; spf=pass smtp.mailfrom=gmail.com;
+ dkim=pass header.d=gmail.com; dmarc=pass header.from=gmail.com
+
+Přihlaste se a ověřte údaje.

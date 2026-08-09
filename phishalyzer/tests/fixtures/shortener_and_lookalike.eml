@@ -1,0 +1,26 @@
+From: =?utf-8?q?Bezpe=C4=8Dnost?= <security@example.org>
+To: prijemce@example.com
+Subject: =?utf-8?b?TnV0bsOpIG92xJvFmWVuw60=?=
+Date: Mon, 05 Jan 2026 09:15:00 +0100
+Message-ID: <test@example.com>
+Received: from mail.example.net (mail.example.net [203.0.113.5]) by
+ mx.example.com; Mon, 05 Jan 2026 09:15:02 +0100
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============8407674522006363599=="
+
+--===============8407674522006363599==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+Ověřte účet: https://bit.ly/abc123
+
+--===============8407674522006363599==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><a href=3D"https://mojebanka-zabezpeceni.example/verify">Ov=C4=9B=
+=C5=99it =C3=BA=C4=8Det</a></body></html>
+
+--===============8407674522006363599==--

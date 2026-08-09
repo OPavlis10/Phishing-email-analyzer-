@@ -1,0 +1,29 @@
+From: HR <hr@example.org>
+To: prijemce@example.com
+Subject: =?utf-8?q?Nov=C3=BD_formul=C3=A1=C5=99?=
+Date: Mon, 05 Jan 2026 09:15:00 +0100
+Message-ID: <test@example.com>
+Received: from mail.example.net (mail.example.net [203.0.113.5]) by
+ mx.example.com; Mon, 05 Jan 2026 09:15:02 +0100
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="===============1822414828228447633=="
+
+--===============1822414828228447633==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+Vyplňte přiložený formulář.
+
+--===============1822414828228447633==
+Content-Type: application/vnd.ms-word.document.macroEnabled.12
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="formular.docm"
+MIME-Version: 1.0
+
+UEsDBBQAAAAAAGO2CV3HHBc8CAAAAAgAAAATAAAAW0NvbnRlbnRfVHlwZXNdLnhtbDxUeXBlcy8+
+UEsDBBQAAAAAAGO2CV1v8c3NBAAAAAQAAAATAAAAd29yZC92YmFQcm9qZWN0LmJpbmZha2VQSwEC
+FAMUAAAAAABjtgldxxwXPAgAAAAIAAAAEwAAAAAAAAAAAAAAgAEAAAAAW0NvbnRlbnRfVHlwZXNd
+LnhtbFBLAQIUAxQAAAAAAGO2CV1v8c3NBAAAAAQAAAATAAAAAAAAAAAAAACAATkAAAB3b3JkL3Zi
+YVByb2plY3QuYmluUEsFBgAAAAACAAIAggAAAG4AAAAAAA==
+
+--===============1822414828228447633==--

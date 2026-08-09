@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "phishalyzer"
+version = "0.1.0"
+description = "Offline analyzátor .eml souborů — strukturovaný report s odůvodněnými nálezy. Žádná síť, žádné otevírání příloh."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = [
+    "tldextract>=5.0",
+    "authres>=1.2",
+    "puremagic>=1.20",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+phishalyzer = "phishalyzer.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
